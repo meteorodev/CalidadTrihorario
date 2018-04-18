@@ -31,13 +31,15 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'base_consulta.apps.BaseConsultaConfig',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base_consulta.apps.BaseConsultaConfig'
+
 ]
 
 MIDDLEWARE = [

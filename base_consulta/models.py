@@ -12,11 +12,10 @@ class BaseConf(models.Model):
     db_desc = models.CharField(max_length=200)
     db_esta =models.IntegerField()
 
-    def __str__(self):
-        return print(self.db_host," ",self.db_user," ",self.db_desc)
 
 
-class Variables():
+
+class Variables(models.Model):
     """vARIABLES DE CONSULTA DE LA BASE DE DATOS EN CASO DE QUE
      SE REALICE LA CONSULTA A VARIAS TABLAS"""
     nombre_var= models.CharField(max_length=100)
