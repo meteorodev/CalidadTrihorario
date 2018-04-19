@@ -13,8 +13,6 @@ class BaseConf(models.Model):
     db_esta =models.IntegerField()
 
 
-
-
 class Variables(models.Model):
     """vARIABLES DE CONSULTA DE LA BASE DE DATOS EN CASO DE QUE
      SE REALICE LA CONSULTA A VARIAS TABLAS"""

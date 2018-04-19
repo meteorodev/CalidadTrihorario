@@ -1,0 +1,33 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+
+    <form role="form" method="post">
+
+        {% bootstrap_form form %}
+
+        {% if  milista%}
+        <ul>
+            {% for b in milista %}
+            <li><a href="#">{{ b.db_host }} {{ b.db_desc }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No host are available.</p>
+        {% endif %}
+        {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+    </form>
+
+{% endblock %}
