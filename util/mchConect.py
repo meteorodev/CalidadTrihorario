@@ -1,8 +1,8 @@
 # -*- coding: utf-8 *-*
-import MySQLdb
+import pymysql
 import pandas as pd
 
-class MchConect:
+class MchConect():
     nombremod = __name__
 
     def __init__(self,db_host,db_user,db_pass,db_name):
@@ -15,7 +15,7 @@ class MchConect:
         #print(self.db_host, self.db_user, self.db_pass, self.db_name)
         datos = [self.db_host, self.db_user, self.db_pass, self.db_name]
 
-        conn = MySQLdb.connect(*datos)  # Conectar a la base de datos
+        conn = pymysql.connect(*datos)  # Conectar a la base de datos
         cursor = conn.cursor()  # Crear un cursor
         cursor.execute(sent)  # Ejecutar una consulta
 
@@ -34,7 +34,7 @@ class MchConect:
         # print(self.db_host, self.db_user, self.db_pass, self.db_name)
         datos = [self.db_host, self.db_user, self.db_pass, self.db_name]
 
-        conn = MySQLdb.connect(*datos)  # Conectar a la base de datos
+        conn = pymysql.connect(*datos)  # Conectar a la base de datos
         data = pd.read_sql(sent,con=conn)
         conn.close()
         return data

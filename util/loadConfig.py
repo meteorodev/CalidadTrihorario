@@ -12,7 +12,7 @@ class LoadConfig():
     def __init__(self):
         """Constructor vacio"""
 
-    def getConfig(self):
+    def getConfig(self,user):
         print("##############################################3")
         print("##############################################3")
         print("getconfig from util package")
@@ -29,4 +29,5 @@ class LoadConfig():
             print("La base esta vacia")
         else:
             print("Si hay datos en la base")
-    #print(user1[0])  # Print the first column retrieved(user's name)
+
+        #print(user1[0])  # Print the first column retrieved(user's name)

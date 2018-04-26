@@ -21,9 +21,14 @@ def index(request):
     return render(request,'base_consulta/index.html',{'milista':listHost})
 
 def config(request):
-    listHost = BaseConf.objects.all()
+
     class NameForm(forms.Form):
-        f1=forms.CharField(label="Etiqueta1",max_length=10)
+        f1=forms.CharField(label="Nombre",max_length=10)
+
+    try:
+        listHost = BaseConf.objects.all()
+    except:
+        raise Http404("no hay host en la base")
     return render(request,'base_consulta/config.html',{"form":NameForm,'milista':listHost})
 
 def selectUser(request):

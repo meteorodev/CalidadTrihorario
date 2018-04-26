@@ -9,14 +9,39 @@
 {% bootstrap_messages %}
 
 {# Display a form #}
-<form action="/url/to/submit/" method="post" class="form">
-  {% csrf_token %}
-
-  {% buttons %}
-    <button type="submit" class="btn btn-primary">
-       Submit
-    </button>
-  {% endbuttons %}
-</form>
-
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Host
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Host Disponibles</h5>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Host</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Desc</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if milista%}
+                    {% for db in milista %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ db.db_host }}</td>
+                        <td>{{ db.db_user }}</td>
+                        <td>{{ db.db_desc }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <p>No host are available.</p>
+                {% endif %}
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary">Agregar nuevo</a>
+        </div>
+    </div>
+</div>
 {# Read the documentation for more information #}

@@ -1,0 +1,89 @@
+{# load icons #}
+{% load icons %}
+<!-- Font Awesome CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+>
+
+
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-header">
+            Test de lectura de configuraciones
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Host obtenidos</h5>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Host</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Desc</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if milista%}
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{ milista.db_host }}</td>
+                    <td>{{ milista.db_user }}</td>
+                    <td>{{ milista.db_desc }}</td>
+                </tr>
+                {% else %}
+                <p>No host are available.</p>
+                {% endif %}
+                </tbody>
+            </table>
+
+            <!-- ##### tabla de datos de la estacion -->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Cod_Vie</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Latitud</th>
+                    <th scope="col">Longitud</th>
+                    <th scope="col">Altitud</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if estaciones%}
+                <!--estacion, municipio, nombreEstacion, latitud2,longitud2,altitud-->
+                    {% for e in estaciones %}
+                    <tr>
+                        <th scope="row">{{e.estacion}}</th>
+                        <td>{{ e.municipio }}</td>
+                        <td>{{ e.nombreEstacion }}</td>
+                        <td>{{ e.latitud2 }}</td>
+                        <td>{{ e.longitud2 }}</td>
+                        <td>{{ e.altitud }}</td>
+                        <td> <a href="#">{% icon 'search' %}</a> </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <span class="label label-danger">No hay datos</span>
+                {% endif %}
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary">Agregar nuevo</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -31,7 +31,8 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'fa',
+    'django_icons',
+    'getObservations.apps.GetobservationsConfig',
     'base_consulta.apps.BaseConsultaConfig',
     'bootstrap4',
     'django.contrib.admin',
