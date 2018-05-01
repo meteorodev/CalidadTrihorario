@@ -39,19 +39,19 @@ db_esta =models.IntegerField()
 
 ## vista de coinexion a la base de datos
 def contodb(request):
-    # try:
-    mchcred = dbConf("darosero")
-    print(mchcred.db_user + " ######## log")
-    conne = mch.MchConect(mchcred.db_host, mchcred.db_user, mchcred.db_pass, mchcred.db_name)
-    data = conne.consulta("select estacion, municipio, nombreEstacion, latitud2" +
-                          ",longitud2,altitud from estaciones where estacion like 'M%' order by estacion;")
-    print(type(mchcred))
-    dataE = []  # Lista de estaciones
-    for d in data:
-        epd = estacionpd(d[0], d[1], d[2], d[3], d[4], d[5])
-        dataE.append(epd)
-    #print(len(dataE))
-    # except:
-    #    raise Http404("Error al conectar a la base")
-    return render(request, 'getObservations/contodb.html', {'milista': mchcred, 'estaciones': dataE})
+    try:
+        mchcred = dbConf("darosero")
+        print(mchcred.db_user + " ######## log")
+        conne = mch.MchConect(mchcred.db_host, mchcred.db_user, mchcred.db_pass, mchcred.db_name)
+        data = conne.consulta("select estacion, municipio, nombreEstacion, latitud2" +
+                              ",longitud2,altitud from estaciones where estacion like 'M%' order by estacion;")
+        print(type(mchcred))
+        dataE = []  # Lista de estaciones
+        for d in data:
+            epd = estacionpd(d[0], d[1], d[2], d[3], d[4], d[5])
+            dataE.append(epd)
+    except:
+        raise Http404("Error al conectar a la base")
 
+
+    return render(request, 'getObservations/contodb.html', {'milista': mchcred, 'estaciones': dataE})
