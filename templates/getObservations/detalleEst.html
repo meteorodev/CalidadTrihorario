@@ -1,0 +1,52 @@
+{# load icons #}
+{% load icons %}
+<!-- Font Awesome CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+>
+
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-header">
+            soy un detalle
+
+        </div>
+        <div class="card-body">
+            {% if estaciones %}
+            {% for i in estaciones%}
+            <div class="alert alert-primary" role="alert">
+                {{i}}
+            </div>
+            <div class="alert alert-secondary" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-danger">Danger</button>
+            <button type="button" class="btn btn-outline-warning">Warning</button>
+            <button type="button" class="btn btn-outline-info">Info</button>
+            <button type="button" class="btn btn-outline-light">Light</button>
+            <button type="button" class="btn btn-outline-dark">Dark</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

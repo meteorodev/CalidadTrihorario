@@ -14,7 +14,7 @@ class BaseConf(models.Model):
 
 
 class Variables(models.Model):
-    """vARIABLES DE CONSULTA DE LA BASE DE DATOS EN CASO DE QUE
+    """VARIABLES DE CONSULTA DE LA BASE DE DATOS EN CASO DE QUE
      SE REALICE LA CONSULTA A VARIAS TABLAS"""
     nombre_var= models.CharField(max_length=100)
     uni_med = models.CharField(max_length=100)

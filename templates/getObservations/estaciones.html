@@ -24,33 +24,14 @@
 
     <div class="card">
         <div class="card-header">
-            Test de lectura de configuraciones
+            Estaciones meteorológicas disponibles
+            {% if milista%}
+                <span class="badge badge-light">{{ milista.db_desc }}</span>
+            {% else %}
+                <p>No se puede contectar.</p>
+            {% endif %}
         </div>
         <div class="card-body">
-            <h5 class="card-title">Host obtenidos</h5>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Host</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Desc</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% if milista%}
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{{ milista.db_host }}</td>
-                    <td>{{ milista.db_user }}</td>
-                    <td>{{ milista.db_desc }}</td>
-                </tr>
-                {% else %}
-                <p>No host are available.</p>
-                {% endif %}
-                </tbody>
-            </table>
-
             <!-- ##### tabla de datos de la estacion -->
             <table class="table table-hover">
                 <thead>
@@ -74,10 +55,6 @@
                         <td>{{ e.latitud2 }}</td>
                         <td>{{ e.longitud2 }}</td>
                         <td>{{ e.altitud }}</td>
-                        <td> <a href="#">{% icon 'check-circle' %}</a> </td>
-                        <td> <a href="#">{% icon 'location-arrow' %}</a> </td>
-                        <td> <a href="#">{% icon 'microchip' %}</a> </td>
-                        <td> <a href="#">{% icon 'wrench' %}</a> </td>
                         <td> <a href="#">{% icon 'edit' %}</a> </td>
                     </tr>
                     {% endfor %}

@@ -1,0 +1,77 @@
+{# load icons #}
+{% load icons %}
+<!-- Font Awesome CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+>
+
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+<div class="container">
+
+    <!-- ##### tabla de datos de la estacion -->
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Cod_Vie</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Latitud</th>
+            <th scope="col">Longitud</th>
+            <th scope="col">Altitud</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if estaciones%}
+        <!--estacion, municipio, nombreEstacion, latitud2,longitud2,altitud-->
+        {% for e in estaciones %}
+        <tr>
+            <th scope="row">
+                <a href="">
+                    {{e.estacion}}
+                </a>
+            </th>
+            <td>{{ e.municipio }}</td>
+            <td>{{ e.nombreEstacion }}</td>
+            <td>{{ e.latitud2 }}</td>
+            <td>{{ e.longitud2 }}</td>
+            <td>{{ e.altitud }}</td>
+            <td><a href="{% url 'getObservations:detalleEst' e.estacion %}">{{e.estacion}} {% icon 'edit' %}</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <span class="label label-danger">No hay datos</span>
+        {% endif %}
+        </tbody>
+    </table>
+    <!--Aqui se debe establecer el paginador-->
+    <div class="pagination">
+    <span class="step-links">
+        {% if estaciones.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ estaciones.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ estaciones.number }} of {{ estaciones.paginator.num_pages }}.
+        </span>
+
+        {% if estaciones.has_next %}
+            <a href="?page={{ estaciones.next_page_number }}">next</a>
+            <a href="?page={{ estaciones.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock %}
