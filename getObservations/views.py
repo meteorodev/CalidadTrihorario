@@ -5,7 +5,7 @@ import random
 
 from base_consulta.models import BaseConf
 from getObservations.models import Estacion
-from .models import Estacion,MesData
+from .models import Estacion
 import util.loadConfig as lc
 import util.mchConect as mch
 
@@ -94,7 +94,7 @@ def detalleEst(request,estacion):
         """
     return render(request, 'getObservations/detalleEst.html', {'estaciones': [estacion] })
 
-
+"""
 def getmes(request,estacion='M0001',añoi=1981,añof=2010):
     try:
         mchcred = dbConf("darosero")
@@ -114,3 +114,4 @@ def getmes(request,estacion='M0001',añoi=1981,añof=2010):
     except:
         raise Http404("Error de conexión")
     return render(request, 'getObservations/mesdata.html',{'mes':[1,2,3]})
+"""

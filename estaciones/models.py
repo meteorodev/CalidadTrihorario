@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# Create your models here.
 class Estacion(models.Model):
     estacion=models.CharField(max_length=5)
     municipio=models.CharField(max_length=4)
@@ -19,6 +18,3 @@ class Estacion(models.Model):
         self.altitud = altitud
     def cargaEstaciones(self):
         pass
-
-
-
