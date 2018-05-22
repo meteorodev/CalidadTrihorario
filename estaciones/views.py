@@ -18,6 +18,7 @@ def dbConf(user):
     listHost = BaseConf.objects.get(db_user=user)
     return listHost
 
+
 # Create your views here.
 
 def listaest(request):
@@ -40,3 +41,22 @@ def listaest(request):
     except:
         raise Http404("Error de conexión")
     return render(request, 'estaciones/listaest.html', {'estaciones': lisEst})
+
+
+def detest(request, estacion):
+    print("view detest ", estacion)
+    try:
+        mchcred = dbConf("darosero")
+        # print(mchcred.db_user + " ######## log")
+        conne = mch.MchConect(mchcred.db_host, mchcred.db_user, mchcred.db_pass, mchcred.db_name)
+        data = conne.consulta("select estacion, municipio, nombreEstacion, latitud2" +
+                              ",longitud2,altitud from estaciones where estacion='" + estacion + "' order by estacion;")
+        dataE = data[0]
+        print(dataE)
+
+        # print("antes de crear el objeto ",dataE[0],dataE[1],dataE[2],dataE[3],dataE[4],dataE[5])
+        est = Estacion(dataE[0],dataE[1],dataE[2],dataE[3],dataE[4],dataE[5])
+        print(est)
+    except:
+        raise Http404("Error de conexión")
+    return render(request, 'estaciones/detest.html', {'est': est})

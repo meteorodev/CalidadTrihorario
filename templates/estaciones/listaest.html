@@ -38,15 +38,14 @@
             {% for e in estaciones %}
             <tr>
                 <th scope="row">
-                    <a href="{% url 'getObservations:detalleEst' e.estacion %}"
-                       href="{% url 'getObservations:detalleEst' e.estacion %}">
+                    <a href="{% url 'estaciones:detest' e.estacion %}">
                         {{e.estacion}}
                     </a>
                 </th>
                 <td>{{ e.municipio }}</td>
                 <td>{{ e.nombreEstacion }}</td>
                 <td>
-                    <a href="{% url 'getObservations:detalleEst' e.estacion %}">{% icon 'paper-plane' %}</a>
+                    <a href="{% url 'estaciones:detest' e.estacion %}">{% icon 'paper-plane' %}</a>
                 </td>
             </tr>
             {% endfor %}

@@ -22,30 +22,40 @@
 
 
     <div class="card">
-        <div class="card-header">
-            soy un detalle
-
-        </div>
         <div class="card-body">
-            {% if estaciones %}
-            {% for i in estaciones%}
+            {% if est %}
             <div class="alert alert-primary" role="alert">
-                {{i}}
+                Estación meteorológica {{est.estacion}} {{est.nombreEstacion}}
             </div>
-            <div class="alert alert-secondary" role="alert">
-                {{i}}
-            </div>
-            {% endfor %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Cod_Vie</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Latitud</th>
+                    <th scope="col">Longuitud</th>
+                    <th scope="col">Altitud</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        {{ est.estacion }}
+                    </th>
+                    <td>{{ est.municipio }}</td>
+                    <td>{{ est.nombreEstacion }}</td>
+                    <td>{{ est.latitud2 }}</td>
+                    <td>{{ est.longuitud2 }}</td>
+                    <td>{{ est.altitud }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-outline-primary">Observaciones sinopticas</button>
+            <button type="button" class="btn btn-outline-primary">Datos mensuales</button>
             {% endif %}
 
-            <button type="button" class="btn btn-outline-primary">Primary</button>
-            <button type="button" class="btn btn-outline-secondary">Secondary</button>
-            <button type="button" class="btn btn-outline-success">Success</button>
-            <button type="button" class="btn btn-outline-danger">Danger</button>
-            <button type="button" class="btn btn-outline-warning">Warning</button>
-            <button type="button" class="btn btn-outline-info">Info</button>
-            <button type="button" class="btn btn-outline-light">Light</button>
-            <button type="button" class="btn btn-outline-dark">Dark</button>
         </div>
     </div>
 </div>

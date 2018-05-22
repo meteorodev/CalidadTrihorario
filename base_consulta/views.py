@@ -9,16 +9,8 @@ from .models import BaseConf
 
 # Create your views here.
 def index(request):
-    ##lc=LoadConfig()
-    #lc.getConfig()
-    try:
-        listHost=BaseConf.objects.all()
-        out=[]
-        for b in listHost:
-            out.append([b.db_host+" : "+b.db_desc])
-    except:
-        raise Http404("no hay host en la base")
-    return render(request,'base_consulta/index.html',{'milista':listHost})
+
+    return render(request,'index.html')
 
 def config(request):
 
